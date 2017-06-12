@@ -2074,7 +2074,6 @@ static void get_scan_count(struct lruvec *lruvec, struct scan_control *sc,
 	enum lru_list lru;
 	int ret = 0;
 	struct per_cpu_pageset __percpu *pcp = zone->pageset;
-	long t;
 
 	/*
 	 * If the zone or memcg is small, nr[l] can be 0.  This
@@ -2203,7 +2202,6 @@ out:
 		unsigned long scan;
 
 		size = get_lru_size(lruvec, lru);
-		t = __this_cpu_read(pcp->stat_threshold);
 		if (!ret) {
 			tmp_size = get_lru_cma_size(lruvec, lru);
 			if (size <= tmp_size)
